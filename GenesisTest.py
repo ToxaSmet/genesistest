@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request, jsonify, session
 from flask_sqlalchemy import SQLAlchemy
 from utils.helper import random_string
+import os
 
 app = Flask(__name__)
 app.secret_key = 'fjodisjfOIJGifgisHGdG:'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///D:\\Documents\\Projects\\GenesisTest\\sqlite.db'  # only for Win
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(os.path.dirname(__file__),
+                                                                    'sqlite.db')  # only for Win
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////absolute/path/to/sqlite.db'  # Unix/Mac
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
