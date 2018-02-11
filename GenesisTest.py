@@ -234,7 +234,6 @@ def index(path):
             db.session.commit()
             session['id'] = user.hash
     else:
-        from utils.helper import random_string
         user = User()
         db.session.add(user)
         db.session.commit()
